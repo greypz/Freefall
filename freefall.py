@@ -9,14 +9,14 @@ pygame.init()
 pygame.mixer.init()
 
 settings_inputs = {
-    "duration": "5",
+    "duration": "120",
     "sfx_volume": "30",
     "bgm_volume": "20",
 }
 active_input = None  # Tracks which input box is currently active
 
 # Load your icon image
-icon = pygame.image.load('images/keddy.png')  # Replace with your icon's path
+icon = pygame.image.load('contents/keddy.png')  # Replace with your icon's path
 sound_effect = pygame.mixer.Sound("contents/phaserUp3.wav")
 sound_effect.set_volume(float(settings_inputs["sfx_volume"]) / 100)
 
@@ -47,19 +47,19 @@ font = F('contents/gamefont.ttf', 30)
 font2 = F('contents/gamefont.ttf', 50)
 
 # Create character
-man_slow1 = pygame.image.load("images/mainSlow1.png").convert_alpha()
+man_slow1 = pygame.image.load("contents/mainSlow1.png").convert_alpha()
 man_image = man_slow1
 man_slow_rect = man_slow1.get_rect()
-man_fast = pygame.image.load("images/mainFast.png").convert_alpha()
+man_fast = pygame.image.load("contents/mainFast.png").convert_alpha()
 man_fast_rect = man_fast.get_rect()
 man_rect = man_slow_rect
 man_slow_rect.center = (265, 150)
 scroll_speed = -2
 # Load image
-bg = pygame.image.load("images/cloudyBG.jpg").convert_alpha()
+bg = pygame.image.load("contents/cloudyBG.jpg").convert_alpha()
 bg_height = bg.get_height()
-supplydrop_image = pygame.image.load("images/supply drop.png").convert_alpha()
-crate_image = pygame.image.load("images/crate.png").convert_alpha()
+supplydrop_image = pygame.image.load("contents/supply drop.png").convert_alpha()
+crate_image = pygame.image.load("contents/crate.png").convert_alpha()
 
 # Define game variables
 scroll = 0
@@ -169,8 +169,8 @@ def settings_menu():
     labels = [
 
         "Duration of the game:",
-        "Sound effect volume (0-1):",
-        "Background music volume (0-1):"
+        "Sound effect volume (0-100):",
+        "Background music volume (0-100):"
     ]
     keys = ["duration", "sfx_volume", "bgm_volume"]
 
@@ -331,7 +331,7 @@ while close_game:
                 pygame.mixer.music.stop()
                 scroll_speed = 0
                 scroll = 0
-                text2 = font2.render("GAME OVER", True, BLACK)
+                text2 = font2.render("Mission accomplished", True, BLACK)
                 text2_rect = text2.get_rect(center=(WIDTH // 2, HEIGHT // 2))
                 text3 = font2.render("YOU WIN!!", True, BLACK)
                 text3_rect = text2.get_rect(center=(WIDTH // 2, 480))
